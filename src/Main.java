@@ -12,7 +12,7 @@ public class Main
 
         while (true) {
 
-            svar = TerminalInput.getString("What is you wish? create / print / delete / update / exit");
+            svar = TerminalInput.getString("Velkommen til Lyngby bibliotek" + "\n" + "Hvad ønsker du dig? Oprette bruger / Oprette bøger / Opret et lån / Aflever / Se de mest udlånte bøger / Afslut");
 
             switch (svar)
             {
@@ -28,8 +28,11 @@ public class Main
                 case "update":
                     Facade.update();
                     break;
+                case "Afslut":
+                    System.exit(0);
+                    break;
                 default:
-                    System.out.println("Wrong input");
+                    System.out.println("Forkert input");
                     break;
             }
         }
