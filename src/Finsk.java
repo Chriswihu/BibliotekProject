@@ -1,3 +1,6 @@
+import java.lang.invoke.SwitchPoint;
+import java.util.ArrayList;
+
 public class Finsk extends Dialog{
     @Override
     public String greet() {
@@ -12,5 +15,14 @@ public class Finsk extends Dialog{
     @Override
     public String selectLanguage() {
         return "määritä kieli fin/dk/eng?";
+    }
+
+    @Override
+    public String selectMenu() {
+        return null;
+    }
+    @Override
+    public ArrayList list() {
+        return null;
     }
 }
