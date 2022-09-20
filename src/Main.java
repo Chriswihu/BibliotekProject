@@ -2,14 +2,12 @@ public class Main
 {
     public static void main(String[] args)
     {
-        selectLanguage();
-
         String input;
+
+        Dialog dialog = selectLanguage();
 
         while (true)
         {
-            Dialog dialog = selectLanguage();
-
             input = Input.getString(dialog.selectMenu());
 
             switch (input)
@@ -47,29 +45,30 @@ public class Main
     }
 
     private static Dialog selectLanguage() {
-        Dialog dialog = null;
+        Dialog dialog = new Engelsk();
+        Dialog choice = null;
         Boolean terminate = true;
 
-        System.out.println("Choose language : ");
+        System.out.println(dialog.greet());
         while (terminate) {
-            if (Input.getString("do you wish to change language").equalsIgnoreCase("y"))
+            if (Input.getString(dialog.changeLanguage()).equalsIgnoreCase("y"))
             {
-                switch (Input.getString("select language eng/dk/fin?")) {
+                switch (Input.getString(dialog.selectLanguage())) {
                     case "dk":
-                        dialog = new Dansk();
+                        choice = new Dansk();
                         terminate = false;
                         break;
                     case "eng":
-                        dialog = new Engelsk();
+                        choice = new Engelsk();
                         terminate = false;
                         break;
                     case "fin":
-                        dialog = new Finsk();
+                        choice = new Finsk();
                         terminate = false;
                         break;
                 }
             }
         }
-        return dialog;
+        return choice;
     }
 }
