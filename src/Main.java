@@ -1,34 +1,48 @@
 import java.util.Scanner;
-import java.sql.*;
 
 public class Main
 {
     public static void main(String[] args)
     {
-        String input;
+        selectLanguage();
+
+
+    }
+
+    private static void selectLanguage() {
+        String ans = "";
+
+        Scanner scanner = new Scanner(System.in);
+
+        Dialog dialog = new Dansk();
 
         while (true)
         {
-            input = getString("Velkommen, hvad ønsker du at gøre?");
-
-            switch (input)
+            System.out.println(dialog.greet());
+            if (Input.getString(dialog.changeLanguage()).equalsIgnoreCase("y"))
             {
-                case "opret":
-
+                switch (Input.getString(dialog.selectLanguage()))
+                {
+                    case "dk":
+                        dialog = new Dansk();
+                        break;
+                    case "eng":
+                        dialog = new Engelsk();
+                        break;
+                    case "fin":
+                        dialog = new Finsk();
+                        break;
+                    default:
+                        dialog = new Engelsk();
+                }
             }
         }
-    }
-
-    public static String getString(String s)
-    {
-        System.out.println(s + " : ");
-        Scanner scan = new Scanner(System.in);
-
-        return scan.nextLine();
     }
 
     public static void opret()
     {
         String sql = "INSERT INTO lånere (";
     }
+
+
 }
