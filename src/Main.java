@@ -8,7 +8,14 @@ public class Main
 
         while (true)
         {
-            input = Input.getString(dialog.selectMenu());
+            input = Input.getString(dialog.selectMenu().get(0).toString()+ '\n'
+            + dialog.selectMenu().get(1).toString() + '\n'
+            + dialog.selectMenu().get(2).toString() + '\n'
+            + dialog.selectMenu().get(3).toString() + '\n'
+            + dialog.selectMenu().get(4).toString() + '\n'
+            + dialog.selectMenu().get(5).toString() + '\n'
+            + dialog.selectMenu().get(6).toString() + '\n'
+            + dialog.selectMenu().get(7).toString() + '\n');
 
             switch (input)
             {
@@ -47,27 +54,32 @@ public class Main
     private static Dialog selectLanguage() {
         Dialog dialog = new Engelsk();
         Dialog choice = null;
-        Boolean terminate = true;
+        Boolean YorN = true;
 
         System.out.println(dialog.greet());
-        while (terminate) {
-            if (Input.getString(dialog.changeLanguage()).equalsIgnoreCase("y"))
+        while (YorN) {
+            if (Input.getString(dialog.changeLanguage()).equals("y"))
             {
                 switch (Input.getString(dialog.selectLanguage())) {
                     case "dk":
                         choice = new Dansk();
-                        terminate = false;
+                        YorN = false;
                         break;
                     case "eng":
                         choice = new Engelsk();
-                        terminate = false;
+                        YorN = false;
                         break;
                     case "fin":
                         choice = new Finsk();
-                        terminate = false;
+                        YorN = false;
                         break;
                 }
             }
+//            else if (Input.getString(dialog.changeLanguage()).equals("n"))
+//            {
+//                choice = dialog;
+//                break;
+//            }
         }
         return choice;
     }

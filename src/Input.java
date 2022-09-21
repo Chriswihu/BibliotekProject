@@ -5,7 +5,7 @@ public class Input
 
     public static String getString(String s)
     {
-        System.out.println(s + " : ");
+        System.out.println(s);
         Scanner scan = new Scanner(System.in);
 
         return scan.nextLine();

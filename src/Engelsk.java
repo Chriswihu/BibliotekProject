@@ -10,7 +10,7 @@ public class Engelsk extends Dialog{
 
     @Override
     public String changeLanguage() {
-        return "du you want to change language?";
+        return "du you want to change language?" + '\n' + "Press Y for Yes ------- Press N for No";
     }
 
     @Override
@@ -19,13 +19,23 @@ public class Engelsk extends Dialog{
     }
 
     @Override
-    public String selectMenu() {
-        String menu = "Select your requested action";
+    public ArrayList selectMenu() {
+        ArrayList menu = new ArrayList<>();
+        menu.add("Select your requested action from the list: " + '\n');
+        menu.add("Press 0: to change to another Language");
+        menu.add("Press 1: to create and add a new user");
+        menu.add("Press 2: to create and add a new book");
+        menu.add("Press 3: to add a book to a user's list");
+        menu.add("Press 4: to remove a book from the user's list");
+        menu.add("Press 5: to remove a user from the Library Data Base");
+        menu.add("Press 6: to update a user's info or status");
+        menu.add("Press 7: to exit and close the program");
         return menu;
     }
     @Override
     public ArrayList list() {
         ArrayList list = new ArrayList<>();
+        list.add("change language");
         list.add("add lender");
         list.add("add book");
         list.add("loan book");

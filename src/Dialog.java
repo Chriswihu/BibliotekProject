@@ -7,7 +7,7 @@ public abstract class Dialog
     public abstract String greet();
     public abstract String changeLanguage();
     public abstract String selectLanguage();
-    public abstract String selectMenu();
+    public abstract ArrayList selectMenu();
     public abstract ArrayList list();
 
 }
