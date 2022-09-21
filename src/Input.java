@@ -1,7 +1,21 @@
+import java.sql.Date;
 import java.util.Scanner;
 
 public class Input
 {
+    public static Date getDate(String s)
+    {
+        while (true)
+        {
+            try {
+                Date svar = Date.valueOf(getString(s));
+                return svar;
+            } catch (IllegalArgumentException e)
+            {
+                System.out.println("Wrong Input");
+            }
+        }
+    }
 
     public static String getString(String s)
     {
