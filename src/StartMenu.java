@@ -2,8 +2,6 @@
 import Niveau2_logik.*;
 import Niveau3_persistens.*;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class StartMenu
@@ -18,12 +16,12 @@ public class StartMenu
                     "\nKunde" + "\n-------------------------------" + "\n1. Opret ny kunde" + "\n2. Se alle registrerede kunder" +
                     "\n3. Find kunden via delvis input" + "\n4. Opdater kundeoplysninger" + "\n5. Slet en kunde" +
                     "\n-------------------------------" + "\nBøger" + "\n-------------------------------" +
-                    "\n6. Opret ny bøger" + "\n7. Vis alle registrerede bøger" + "\n8. Vis udlånte bøger" +
+                    "\n6. Opret ny bog" + "\n7. Vis alle registrerede bøger" + "\n8. Vis udlånte bøger" +
                     "\n9. Vis tilgængelige bøger" + "\n10. Find bøger via delvis input" + "\n11. Opdater en bog" +
                     "\n12. Slet en bog" + "\n-------------------------------" + "\nUdlån" + "\n-------------------------------" +
                     "\n13. Opret nyt udlån" + "\n14. Registrer retur af udlånt bog" + "\n15. Vis alle udlån" +
                     "\n16. Vis alle udlån for en kunde" + "\n17. Vis mest udlånte bøger" + "\n-------------------------------" +
-                    "\nDATA" + "\n-------------------------------" + "\n18. Gem & Afslut" + "\n19. Afslut uden at gemme" +
+                    "\nDATA" + "\n-------------------------------" + "\n18. Afslut" +
                     "\n-------------------------------" + "\nSkriv dit valg: ");
 
             switch (svar)
@@ -31,85 +29,79 @@ public class StartMenu
                 case 1:
                     KundeMapper.opretKunde();
                     break;
-
-//                case 4:
-//                    databaseIO.updateGuestInfo(c);
-//                    break;
-//                case 5:
-//                    databaseIO.deleteGuest(c);
-//                    break;
-//                case 6:
-//                    System.out.println("---------------------------------");
-//                    System.out.print("Oversigt over alle registrerede værelser:\n");
-//                    System.out.println("---------------------------------");
-//                    databaseIO.showAllRooms(c);
-//                    break;
-//                case 7:
-//                    System.out.println("---------------------------------");
-//                    System.out.print("Oversigt over alle ledige værelser:\n");
-//                    System.out.println("---------------------------------");
-//                    databaseIO.showAvailableRooms(c);
-//                    break;
-//                case 8:
-//                    System.out.println("---------------------------------");
-//                    System.out.print("Oversigt over alle beboede værelser:\n");
-//                    System.out.println("---------------------------------");
-//                    databaseIO.showOccupiedRooms(c);
-//                    break;
-//                case 9:
-//                    databaseIO.showSpecificRoom(c);
-//                    break;
-//                case 10:
-//                    databaseIO.bookRoom(c);
-//                    break;
-//                case 11:
-//                    databaseIO.extendBooking(c);
-//                    break;
-//                case 12:
-//                    System.out.println("---------------------------------");
-//                    System.out.print("Oversigt over bookings:\n");
-//                    System.out.println("---------------------------------");
-//                    databaseIO.showAllBookings(c);
-//                    break;
-//                case 13:
-//                    databaseIO.showAllBookingsForGuest(c);
-//                    break;
-//                case 14:
-//                    databaseIO.showAllBookingsForRoom(c);
-//                    break;
-//                case 15:
-//                    System.out.println("---------------------------------");
-//                    System.out.println("\t\tRoom Service Menu");
-//                    System.out.println("---------------------------------");
-//                    databaseIO.showRoomServiceMenu(c);
-//                    break;
-//                case 16:
-//                    databaseIO.orderRoomService(c);
-//                    break;
-//                case 17:
-//                    System.out.println("---------------------------------");
-//                    System.out.println("\tEkstra Service Menu");
-//                    System.out.println("---------------------------------");
-//                    databaseIO.showAdditionalServiceMenu(c);
-//                    break;
-//                case 18:
-//                    databaseIO.orderAdditionalService(c);
-//                    break;
-//                case 19:
-//                    databaseIO.showReceipt(c);
-//                    break;
-//                case 20:
-//                    databaseIO.checkOut(c);
-//                    break;
-//                case 21:
-//                    databaseIO.cancelBooking(c);
-//                    break;
-//                case 22:
-//                    databaseIO.saveAndExit(c);
-//                    break;
-//                default:
-//                    System.out.println("Ugyldigt valg!");
-//                    break;
+                case 2:
+                    System.out.println("---------------------------------");
+                    System.out.print("Oversigt over alle registrerede kunder:\n");
+                    System.out.println("---------------------------------");
+                    KundeMapper.udskrivKunder();
+                    break;
+                case 3:
+                    KundeMapper.findKunde();
+                    break;
+                case 4:
+                    KundeMapper.opdaterKunde();
+                    break;
+                case 5:
+                    KundeMapper.sletKunde();
+                    break;
+                case 6:
+                    BogMapper.opretBog();
+                    break;
+                case 7:
+                    System.out.println("---------------------------------");
+                    System.out.print("Oversigt over alle registrerede bøger:\n");
+                    System.out.println("---------------------------------");
+                    BogMapper.udskrivBøger();
+                    break;
+                case 8:
+                    System.out.println("---------------------------------");
+                    System.out.print("Oversigt over alle udlånte bøger:\n");
+                    System.out.println("---------------------------------");
+                    BogMapper.udskrivUdlånteBøger();
+                    break;
+                case 9:
+                    System.out.println("---------------------------------");
+                    System.out.print("Oversigt over alle tilgængelige bøger:\n");
+                    System.out.println("---------------------------------");
+                    BogMapper.udskrivTilgængeligeBøger();
+                    break;
+                case 10:
+                    BogMapper.findBog();
+                    break;
+                case 11:
+                    BogMapper.opdaterBog();
+                    break;
+                case 12:
+                    BogMapper.sletBog();
+                    break;
+                case 13:
+                    UdlånsMapper.opretUdlån();
+                    break;
+                case 14:
+                    UdlånsMapper.registrerRetur();
+                    break;
+                case 15:
+                    System.out.println("---------------------------------");
+                    System.out.print("Oversigt over alle udlån:\n");
+                    System.out.println("---------------------------------");
+                    UdlånsMapper.udskrivUdlån();
+                    break;
+                case 16:
+                    UdlånsMapper.udskrivUdlånForEnKunde();
+                    break;
+                case 17:
+                    System.out.println("---------------------------------");
+                    System.out.print("Oversigt over de mest udlånte bøger:\n");
+                    System.out.println("---------------------------------");
+                    UdlånsMapper.udskrivMestUdlånteBøger();
+                    break;
+                case 18:
+                    System.out.println("Programmet er afsluttet");
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Ugyldigt valg!");
+                    break;
             }
         }
     }
