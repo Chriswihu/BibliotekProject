@@ -1,7 +1,13 @@
 import java.lang.invoke.SwitchPoint;
 import java.util.ArrayList;
 
-public class Finsk extends Dialog{
+public class Finsk extends Dialog
+{
+    @Override
+    public Dialog language(Dialog s) {
+        return null;
+    }
+
     @Override
     public String greet() {
         return "Hei ja tervetuloa";
@@ -20,19 +26,21 @@ public class Finsk extends Dialog{
     @Override
     public ArrayList selectMenu() {
         ArrayList menu = new ArrayList<>();
-        menu.add("Select your requested action from the list : " + '\n');
-        menu.add("Press 1: to create and add a new user");
-        menu.add("Press 2: to create and add a new book");
-        menu.add("Press 3: to add a book to a user's list");
-        menu.add("Press 4: to remove a book from the user's list");
-        menu.add("Press 5: to remove a user from the Library Data Base");
-        menu.add("Press 6: to update a user's info or status");
-        menu.add("Press 7: to exit and close the program");
+        menu.add("Valitse pyytämäsi toiminto luettelosta:" + '\n');
+        menu.add("Paina 0: vaihtaaksesi toiseen kieleen");
+        menu.add("Paina 1: luodaksesi ja lisätäksesi uuden käyttäjän");
+        menu.add("Paina 2: luodaksesi ja lisätäksesi uuden kirjan");
+        menu.add("Paina 3: lisätäksesi kirjan käyttäjäluetteloon");
+        menu.add("Paina 4: poistaaksesi kirjan käyttäjäluettelosta");
+        menu.add("Paina 5: poistaaksesi käyttäjän kirjaston tietokannasta");
+        menu.add("Paina 6: päivittääksesi käyttäjän tiedot tai tila");
+        menu.add("Paina 7: poistuaksesi ja sulkeaksesi ohjelman");
         return menu;
     }
     @Override
     public ArrayList list() {
         ArrayList list = new ArrayList<>();
+        list.add("Vaihda kieltä");
         list.add("lisää lainanantaja");
         list.add("lisää kirja");
         list.add("lainakirja");

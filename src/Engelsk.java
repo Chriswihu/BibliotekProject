@@ -3,6 +3,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Engelsk extends Dialog{
+
+    @Override
+    public Dialog language(Dialog s) {
+        return null;
+    }
+
     @Override
     public String greet() {
         return "hello and welcome!";

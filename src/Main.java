@@ -58,7 +58,7 @@ public class Main
 
         System.out.println(dialog.greet());
         while (YorN) {
-            if (Input.getString(dialog.changeLanguage()).equals("y"))
+            if (Input.getString(dialog.changeLanguage()).equalsIgnoreCase("y"))
             {
                 switch (Input.getString(dialog.selectLanguage())) {
                     case "dk":

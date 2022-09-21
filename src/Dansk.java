@@ -4,6 +4,11 @@ import java.util.ArrayList;
 public class Dansk extends Dialog
 {
     @Override
+    public Dialog language(Dialog s) {
+        return null;
+    }
+
+    @Override
     public String greet() {
         return "hej og velkommen!";
     }

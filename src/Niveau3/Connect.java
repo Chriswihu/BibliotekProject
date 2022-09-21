@@ -1,3 +1,5 @@
+package Niveau3;
+
 import java.sql.DriverManager;
 
 public class Connect
