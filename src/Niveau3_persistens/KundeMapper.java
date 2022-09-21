@@ -26,7 +26,7 @@ public class KundeMapper
             ids.next();
             int id = ids.getInt(1);
 
-            System.out.println("Kunde med " + id + " er nu oprettet");
+            System.out.println("Kunde med id nummer " + id + " er nu oprettet");
 
         }
     }
@@ -75,19 +75,22 @@ public class KundeMapper
 
     public static void opdaterKunde() throws SQLException
     {
-        String sql = "update LånerTabel set Navn = ?, Adresse = ?, Postnummer = ? where idLåner = ?";
+        String sql = "update LånerTabel set Navn = ?, Adresse = ?, Postnummer = ? where idLånerTabel = ?";
 
         try (Connection con = ConnectionConfig.getConnection();
+
              PreparedStatement ps = con.prepareStatement(sql)) {
 
-            ps.setString(1, TerminalInput.getString("Indtast navn: "));
-            ps.setString(2, TerminalInput.getString("Indtast adresse: "));
-            ps.setInt(3, TerminalInput.getInt("Indtast postnummer: "));
+            udskrivKunder();
+            System.out.println("-------------------------");
             ps.setInt(4, TerminalInput.getInt("Indtast id: "));
+            ps.setString(1, TerminalInput.getString("Indtast nyt navn: "));
+            ps.setString(2, TerminalInput.getString("Indtast ny adresse: "));
+            ps.setInt(3, TerminalInput.getInt("Indtast ny postnummer: "));
 
             ps.executeUpdate();
 
-            System.out.println("Kunde er opdateret");
+            System.out.println("Kunden er nu opdateret");
         }
     }
 
