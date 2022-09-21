@@ -10,11 +10,13 @@ public class UdlånsMapper
     {
         String sql = "INSERT INTO UdlånsTabel (LånerID, BogID, Udlånsdato, Afleveringsdato) VALUES (?, ?, ?, ?)";
         String sql2 = "UPDATE BogTabel SET Status = 1 WHERE idBogTabel = ?";
+        String sql3 = "UPDATE BogTabel SET AntalUdlånt = AntalUdlånt + 1 WHERE idBogTabel = ?";
 
         try (Connection con = ConnectionConfig.getConnection();
 
              PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
              PreparedStatement ps2 = con.prepareStatement(sql2);
+                PreparedStatement ps3 = con.prepareStatement(sql3);
         ) {
 
             KundeMapper.udskrivKunder();
@@ -26,9 +28,11 @@ public class UdlånsMapper
             ps.setDate(3, TerminalInput.getDate("Indtast udlånsdato: "));
             ps.setDate(4, TerminalInput.getDate("Indtast afleveringsdato: "));
             ps2.setInt(1, TerminalInput.getInt("Indtast bogID: "));
+            ps3.setInt(1, TerminalInput.getInt("Indtast bogID: "));
 
             ps.executeUpdate();
             ps2.executeUpdate();
+            ps3.executeUpdate();
 
             ResultSet ids = ps.getGeneratedKeys();
             ids.next();
@@ -42,7 +46,7 @@ public class UdlånsMapper
 
     public static void registrerRetur() throws SQLException
     {
-        String sql = "UPDATE UdlånsTabel SET Afleveringsdato = ? WHERE idUdlånsTabel = ?";
+        String sql = "UPDATE UdlånsTabel SET Afleveringsdato = ? WHERE idUdlånstabel = ?";
         String sql2 = "UPDATE BogTabel SET Status = 0 WHERE idBogTabel = ?";
 
         try (Connection con = ConnectionConfig.getConnection();
@@ -66,7 +70,7 @@ public class UdlånsMapper
     }
 
     public static void udskrivUdlån() {
-        String sql = "select * from UdlånTabel";
+        String sql = "select * from UdlånsTabel";
 
         try (Connection con = ConnectionConfig.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -80,7 +84,7 @@ public class UdlånsMapper
                 Date udlånsdato = resultSet.getDate("Udlånsdato");
                 Date afleveringsdato = resultSet.getDate("Afleveringsdato");
 
-                System.out.println("ID: " + id + " Låner ID: " + lånerID + " Bog ID: " + bogID + " Udlånsdato: " + udlånsdato + " Afleveringsdato: " + afleveringsdato);
+                System.out.println("Udlåns ID: " + id + " Låner ID: " + lånerID + " Bog ID: " + bogID + " Udlånsdato: " + udlånsdato + " Afleveringsdato: " + afleveringsdato);
             }
         } catch (SQLException e) {
             e.printStackTrace();

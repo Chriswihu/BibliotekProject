@@ -10,7 +10,7 @@ import java.sql.Statement;
 public class BogMapper {
     public static void opretBog()
     {
-        String sql = "INSERT INTO BogTabel (Forfatter, Titel, Udgivelsesår, Status) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO BogTabel (Forfatter, Titel, Udgivelsesår, Status, AntalUdlån) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection con = ConnectionConfig.getConnection();
 
@@ -20,7 +20,8 @@ public class BogMapper {
             ps.setString(1, TerminalInput.getString("Indtast forfatter: "));
             ps.setString(2, TerminalInput.getString("Indtast titel: "));
             ps.setInt(3, TerminalInput.getInt("Indtast udgivelsesår: "));
-            ps.setString(4, TerminalInput.getString("Indtast status (0 som betyder ledig): "));
+            ps.setInt(4, TerminalInput.getInt("Indtast 0 for at oprette status: "));
+            ps.setInt(5, TerminalInput.getInt("Indtast 0 for at oprette antal udlån: "));
 
             ps.executeUpdate();
 
