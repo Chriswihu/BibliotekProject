@@ -49,8 +49,9 @@ public class BogMapper {
                 String forfatter = resultSet.getString("Forfatter");
                 String titel = resultSet.getString("Titel");
                 int udgivelsesår = resultSet.getInt("Udgivelsesår");
+                int AntalUdlån = resultSet.getInt("AntalUdlån");
 
-                System.out.println("ID: " + id + " Forfatter: " + forfatter + " Titel: " + titel + " Udgivelsesår: " + udgivelsesår);
+                System.out.println("ID: " + id + " Forfatter: " + forfatter + " Titel: " + titel + " Udgivelsesår: " + udgivelsesår + " Antal udlån: " + AntalUdlån);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -59,7 +60,7 @@ public class BogMapper {
 
     public static void udskrivUdlånteBøger()
     {
-        String sql = "select * from BogTabel where Udlånt = 1";
+        String sql = "select * from BogTabel where Status = 1";
 
         try (Connection con = ConnectionConfig.getConnection();
              PreparedStatement ps = con.prepareStatement(sql))
@@ -84,7 +85,7 @@ public class BogMapper {
 
     public static void udskrivTilgængeligeBøger()
     {
-        String sql = "select * from BogTabel where Udlånt = 0";
+        String sql = "select * from BogTabel where Status = 0";
 
         try (Connection con = ConnectionConfig.getConnection();
              PreparedStatement ps = con.prepareStatement(sql))
@@ -115,7 +116,7 @@ public class BogMapper {
              PreparedStatement ps = con.prepareStatement(sql))
         {
 
-            ps.setString(1, TerminalInput.getString("Indtast titel: "));
+            ps.setString(1, "%" + TerminalInput.getString("Indtast titel: ") + "%");
 
             ResultSet resultSet = ps.executeQuery();
 

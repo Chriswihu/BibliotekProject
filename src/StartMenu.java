@@ -87,7 +87,7 @@ public class StartMenu
                     UdlånsMapper.udskrivUdlån();
                     break;
                 case 16:
-                    UdlånsMapper.udskrivUdlånForEnKunde();
+                    UdlånsMapper.visUdlånForEnKunde();
                     break;
                 case 17:
                     System.out.println("---------------------------------");

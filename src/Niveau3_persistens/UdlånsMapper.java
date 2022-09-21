@@ -16,7 +16,7 @@ public class UdlånsMapper
 
              PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
              PreparedStatement ps2 = con.prepareStatement(sql2);
-                PreparedStatement ps3 = con.prepareStatement(sql3);
+             PreparedStatement ps3 = con.prepareStatement(sql3);
         ) {
 
             KundeMapper.udskrivKunder();
@@ -27,8 +27,8 @@ public class UdlånsMapper
             ps.setInt(2, TerminalInput.getInt("Indtast bogID: "));
             ps.setDate(3, TerminalInput.getDate("Indtast udlånsdato: "));
             ps.setDate(4, TerminalInput.getDate("Indtast afleveringsdato: "));
-            ps2.setInt(1, TerminalInput.getInt("Indtast bogID: "));
-            ps3.setInt(1, TerminalInput.getInt("Indtast bogID: "));
+            ps2.setInt(1, TerminalInput.getInt("Indtast bogID for at registrere status: "));
+            ps3.setInt(1, TerminalInput.getInt("Indtast bogID for at registrere antal udlån: "));
 
             ps.executeUpdate();
             ps2.executeUpdate();
@@ -46,7 +46,7 @@ public class UdlånsMapper
 
     public static void registrerRetur() throws SQLException
     {
-        String sql = "UPDATE UdlånsTabel SET Afleveringsdato = ? WHERE idUdlånstabel = ?";
+        String sql = "DELETE FROM UdlånsTabel WHERE idUdlånsTabel = ?";
         String sql2 = "UPDATE BogTabel SET Status = 0 WHERE idBogTabel = ?";
 
         try (Connection con = ConnectionConfig.getConnection();
@@ -57,7 +57,6 @@ public class UdlånsMapper
 
             UdlånsMapper.udskrivUdlån();
             System.out.println("-----------------------------");
-            ps.setDate(1, TerminalInput.getDate("Indtast afleveringsdato: "));
             ps.setInt(2, TerminalInput.getInt("Indtast udlånsID: "));
             ps2.setInt(1, TerminalInput.getInt("Indtast bogID: "));
 
@@ -91,7 +90,7 @@ public class UdlånsMapper
         }
     }
 
-    public static void udskrivUdlånForEnKunde() {
+    public static void visUdlånForEnKunde() {
         String sql = "select * from UdlånsTabel where LånerID = ?";
 
         try (Connection con = ConnectionConfig.getConnection();
