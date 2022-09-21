@@ -8,8 +8,9 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class BogMapper {
-    public static void opretBog() {
-        String sql = "INSERT INTO BogTabel (Forfatter, Titel, Udgivelsesår) VALUES (?, ?, ?)";
+    public static void opretBog()
+    {
+        String sql = "INSERT INTO BogTabel (Forfatter, Titel, Udgivelsesår, Status) VALUES (?, ?, ?, ?)";
 
         try (Connection con = ConnectionConfig.getConnection();
 
@@ -19,6 +20,7 @@ public class BogMapper {
             ps.setString(1, TerminalInput.getString("Indtast forfatter: "));
             ps.setString(2, TerminalInput.getString("Indtast titel: "));
             ps.setInt(3, TerminalInput.getInt("Indtast udgivelsesår: "));
+            ps.setString(4, TerminalInput.getString("Indtast status (0 som betyder ledig): "));
 
             ps.executeUpdate();
 
@@ -170,6 +172,32 @@ public class BogMapper {
 
             System.out.println("Bog er nu slettet");
 
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public static void visMestUdlånteBøger()
+{
+        String sql = "select * from BogTabel order by AntalUdlån desc limit 5";
+
+        try (Connection con = ConnectionConfig.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql))
+        {
+
+            ResultSet resultSet = ps.executeQuery();
+
+            while (resultSet.next())
+            {
+                int id = resultSet.getInt("idBogTabel");
+                String forfatter = resultSet.getString("Forfatter");
+                String titel = resultSet.getString("Titel");
+                int udgivelsesår = resultSet.getInt("Udgivelsesår");
+                int antalUdlån = resultSet.getInt("AntalUdlån");
+
+                System.out.println("ID: " + id + " Forfatter: " + forfatter + " Titel: " + titel + " Udgivelsesår: " + udgivelsesår + " Antal udlån: " + antalUdlån);
+            }
         } catch (Exception e)
         {
             e.printStackTrace();

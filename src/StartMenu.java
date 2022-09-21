@@ -93,7 +93,7 @@ public class StartMenu
                     System.out.println("---------------------------------");
                     System.out.print("Oversigt over de mest udlånte bøger:\n");
                     System.out.println("---------------------------------");
-                    UdlånsMapper.udskrivMestUdlånteBøger();
+                    BogMapper.visMestUdlånteBøger();
                     break;
                 case 18:
                     System.out.println("Programmet er afsluttet");

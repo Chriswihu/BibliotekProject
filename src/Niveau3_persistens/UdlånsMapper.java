@@ -1,29 +1,113 @@
 package Niveau3_persistens;
 
+import java.sql.*;
+
+import Niveau2_logik.TerminalInput;
+
 public class UdlånsMapper
 {
-    public static void opretUdlån()
+    public static void opretUdlån() throws SQLException
     {
+        String sql = "INSERT INTO UdlånsTabel (LånerID, BogID, Udlånsdato, Afleveringsdato) VALUES (?, ?, ?, ?)";
+        String sql2 = "UPDATE BogTabel SET Status = 1 WHERE idBogTabel = ?";
+
+        try (Connection con = ConnectionConfig.getConnection();
+
+             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+             PreparedStatement ps2 = con.prepareStatement(sql2);
+        ) {
+
+            KundeMapper.udskrivKunder();
+            System.out.println("-----------------------------");
+            ps.setInt(1, TerminalInput.getInt("Indtast lånerID: "));
+            BogMapper.udskrivBøger();
+            System.out.println("-----------------------------");
+            ps.setInt(2, TerminalInput.getInt("Indtast bogID: "));
+            ps.setDate(3, TerminalInput.getDate("Indtast udlånsdato: "));
+            ps.setDate(4, TerminalInput.getDate("Indtast afleveringsdato: "));
+            ps2.setInt(1, TerminalInput.getInt("Indtast bogID: "));
+
+            ps.executeUpdate();
+            ps2.executeUpdate();
+
+            ResultSet ids = ps.getGeneratedKeys();
+            ids.next();
+            int id = ids.getInt(1);
+
+            System.out.println("Udlån med id nummer " + id + " er nu oprettet");
 
 
-    }
-    public static void registrerRetur()
-    {
-        System.out.println("registrerRetur");
-    }
-    public static void udskrivUdlån()
-    {
-        System.out.println("udskrivUdlån");
+        }
     }
 
-    public static void udskrivUdlånForEnKunde()
+    public static void registrerRetur() throws SQLException
     {
-        System.out.println("udskrivUdlånForEnKunde");
+        String sql = "UPDATE UdlånsTabel SET Afleveringsdato = ? WHERE idUdlånsTabel = ?";
+        String sql2 = "UPDATE BogTabel SET Status = 0 WHERE idBogTabel = ?";
+
+        try (Connection con = ConnectionConfig.getConnection();
+
+             PreparedStatement ps = con.prepareStatement(sql);
+             PreparedStatement ps2 = con.prepareStatement(sql2);
+        ) {
+
+            UdlånsMapper.udskrivUdlån();
+            System.out.println("-----------------------------");
+            ps.setDate(1, TerminalInput.getDate("Indtast afleveringsdato: "));
+            ps.setInt(2, TerminalInput.getInt("Indtast udlånsID: "));
+            ps2.setInt(1, TerminalInput.getInt("Indtast bogID: "));
+
+            ps.executeUpdate();
+            ps2.executeUpdate();
+
+            System.out.println("Bog er nu afleveret");
+
+        }
     }
 
-    public static void udskrivMestUdlånteBøger()
-    {
-        System.out.println("udskrivMestUdlånteBøger");
+    public static void udskrivUdlån() {
+        String sql = "select * from UdlånTabel";
+
+        try (Connection con = ConnectionConfig.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ResultSet resultSet = ps.executeQuery();
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("idUdlånsTabel");
+                int lånerID = resultSet.getInt("LånerID");
+                int bogID = resultSet.getInt("BogID");
+                Date udlånsdato = resultSet.getDate("Udlånsdato");
+                Date afleveringsdato = resultSet.getDate("Afleveringsdato");
+
+                System.out.println("ID: " + id + " Låner ID: " + lånerID + " Bog ID: " + bogID + " Udlånsdato: " + udlånsdato + " Afleveringsdato: " + afleveringsdato);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
+    public static void udskrivUdlånForEnKunde() {
+        String sql = "select * from UdlånsTabel where LånerID = ?";
+
+        try (Connection con = ConnectionConfig.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, TerminalInput.getInt("Indtast låner ID: "));
+
+            ResultSet resultSet = ps.executeQuery();
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("idUdlånsTabel");
+                int lånerID = resultSet.getInt("LånerID");
+                int bogID = resultSet.getInt("BogID");
+                Date udlånsdato = resultSet.getDate("Udlånsdato");
+                Date afleveringsdato = resultSet.getDate("Afleveringsdato");
+
+                System.out.println("ID: " + id + " Låner ID: " + lånerID + " Bog ID: " + bogID + " Udlånsdato: " + udlånsdato + " Afleveringsdato: " + afleveringsdato);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

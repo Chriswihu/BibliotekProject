@@ -1,5 +1,6 @@
 package Niveau2_logik;
 
+import java.sql.Date;
 import java.util.Scanner;
 
 public class TerminalInput {
@@ -19,6 +20,18 @@ public class TerminalInput {
                 int ans = Integer.parseInt(getString(s));
                 return ans;
             } catch (NumberFormatException e) {
+                System.out.println("Wrong input");
+            }
+        }
+    }
+
+    public static Date getDate(String s)
+    {
+        while (true) {
+            try {
+                Date ans = Date.valueOf(getString(s));
+                return ans;
+            } catch (IllegalArgumentException e) {
                 System.out.println("Wrong input");
             }
         }
