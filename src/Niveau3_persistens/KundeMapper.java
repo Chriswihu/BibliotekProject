@@ -2,6 +2,7 @@ package Niveau3_persistens;
 
 import Niveau2_logik.TerminalInput;
 
+import java.rmi.server.ExportException;
 import java.sql.*;
 
 public class KundeMapper

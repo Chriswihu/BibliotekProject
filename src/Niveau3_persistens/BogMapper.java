@@ -20,7 +20,7 @@ public class BogMapper {
             ps.setString(1, TerminalInput.getString("Indtast forfatter: "));
             ps.setString(2, TerminalInput.getString("Indtast titel: "));
             ps.setInt(3, TerminalInput.getInt("Indtast udgivelsesår: "));
-            ps.setInt(4, TerminalInput.getInt("Indtast 0 for at oprette status: "));
+            ps.setInt(4, TerminalInput.getInt("Indtast antal kopier for at oprette status: "));
             ps.setInt(5, TerminalInput.getInt("Indtast 0 for at oprette antal udlån: "));
 
             ps.executeUpdate();
@@ -60,7 +60,7 @@ public class BogMapper {
 
     public static void udskrivUdlånteBøger()
     {
-        String sql = "select * from BogTabel where Status = 1";
+        String sql = "select * from BogTabel where AntalUdlån > 0 ";
 
         try (Connection con = ConnectionConfig.getConnection();
              PreparedStatement ps = con.prepareStatement(sql))
@@ -85,7 +85,7 @@ public class BogMapper {
 
     public static void udskrivTilgængeligeBøger()
     {
-        String sql = "select * from BogTabel where Status = 0";
+        String sql = "select * from BogTabel where Status != 0";
 
         try (Connection con = ConnectionConfig.getConnection();
              PreparedStatement ps = con.prepareStatement(sql))

@@ -9,8 +9,8 @@ public class UdlånsMapper
     public static void opretUdlån() throws SQLException
     {
         String sql = "INSERT INTO UdlånsTabel (LånerID, BogID, Udlånsdato, Afleveringsdato) VALUES (?, ?, ?, ?)";
-        String sql2 = "UPDATE BogTabel SET Status = 1 WHERE idBogTabel = ?";
-        String sql3 = "UPDATE BogTabel SET AntalUdlånt = AntalUdlånt + 1 WHERE idBogTabel = ?";
+        String sql2 = "UPDATE BogTabel SET Status = Status - 1 WHERE idBogTabel = ?";
+        String sql3 = "UPDATE BogTabel SET AntalUdlån = AntalUdlån + 1 WHERE idBogTabel = ?";
 
         try (Connection con = ConnectionConfig.getConnection();
 
@@ -47,7 +47,7 @@ public class UdlånsMapper
     public static void registrerRetur() throws SQLException
     {
         String sql = "DELETE FROM UdlånsTabel WHERE idUdlånsTabel = ?";
-        String sql2 = "UPDATE BogTabel SET Status = 0 WHERE idBogTabel = ?";
+        String sql2 = "UPDATE BogTabel SET Status = Status + 1 WHERE idBogTabel = ?";
 
         try (Connection con = ConnectionConfig.getConnection();
 
