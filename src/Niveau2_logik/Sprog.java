@@ -8,7 +8,7 @@ public class Sprog {
     Scanner sc = new Scanner(System.in);
 
     public String skiftSprog() throws SQLException {
-        System.out.println("Vælg dit sprog (dansk / engelsk / finsk): ");
+        System.out.println("Hej og velkommen. \nVælg dit sprog (dansk / engelsk / finsk): ");
         String chosenLanguage = sc.nextLine().toLowerCase();
         String selectedLanguage = "";
 
