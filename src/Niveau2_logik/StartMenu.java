@@ -1,3 +1,4 @@
+package Niveau2_logik;
 
 import Niveau2_logik.*;
 import Niveau3_persistens.*;
