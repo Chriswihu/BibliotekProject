@@ -49,9 +49,12 @@ public class BogMapper {
                 String forfatter = resultSet.getString("Forfatter");
                 String titel = resultSet.getString("Titel");
                 int udgivelsesår = resultSet.getInt("Udgivelsesår");
+                int ledige = resultSet.getInt("Status");
                 int AntalUdlån = resultSet.getInt("AntalUdlån");
 
-                System.out.println("ID: " + id + " Forfatter: " + forfatter + " Titel: " + titel + " Udgivelsesår: " + udgivelsesår + " Antal udlån: " + AntalUdlån);
+                System.out.println("ID: " + id + " Forfatter: " + forfatter +
+                        " Titel: " + titel + " Udgivelsesår: " + udgivelsesår +
+                        " Antal ledige: " + ledige + " Antal udlån: " + AntalUdlån);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -74,8 +77,11 @@ public class BogMapper {
                 String forfatter = resultSet.getString("Forfatter");
                 String titel = resultSet.getString("Titel");
                 int udgivelsesår = resultSet.getInt("Udgivelsesår");
+                int ledige = resultSet.getInt("Status");
 
-                System.out.println("ID: " + id + " Forfatter: " + forfatter + " Titel: " + titel + " Udgivelsesår: " + udgivelsesår);
+                System.out.println("ID: " + id + " Forfatter: " + forfatter +
+                        " Titel: " + titel + " Udgivelsesår: " + udgivelsesår +
+                        " Antal: " + ledige);
             }
         } catch (Exception e)
         {
@@ -99,8 +105,11 @@ public class BogMapper {
                 String forfatter = resultSet.getString("Forfatter");
                 String titel = resultSet.getString("Titel");
                 int udgivelsesår = resultSet.getInt("Udgivelsesår");
+                int tilgængelige = resultSet.getInt("Status");
 
-                System.out.println("ID: " + id + " Forfatter: " + forfatter + " Titel: " + titel + " Udgivelsesår: " + udgivelsesår);
+                System.out.println("ID: " + id + " Forfatter: " + forfatter +
+                        " Titel: " + titel + " Udgivelsesår: " + udgivelsesår +
+                        " Antal: " + tilgængelige);
             }
         } catch (Exception e)
         {
