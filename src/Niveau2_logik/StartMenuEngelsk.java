@@ -14,17 +14,18 @@ public class StartMenuEngelsk
 
             while (true)
             {
-                svar = TerminalInput.getInt("\n-------------------------------" + "\nWelcome to Lyngby Library\" + \"\\n------------------------------\" +\n" +
-                                               "\"\\nCustomer\" + \"\\n------------------------------\" + \"\\n1. Create new customer\" + \"\\n2. View all registered customers\" +\n" +
-                                               "\"\\n3. Find the customer via partial input\" + \"\\n4. Update customer information\" + \"\\n5. Delete a customer\" +\n" +
-                                               "\"\\n-----------------------------\" + \"\\nBooks\" + \"\\n------ ---------------------------\" +\n" +
-                                               "\"\\n6. Create new book\" + \"\\n7. Show all registered books\" + \"\\n8. Show borrowed books\" +\n" +
-                                               "\"\\n9. Show available books\" + \"\\n10. Find books via partial input\" + \"\\n11. Update a book\" +\n" +
-                                               "\"\\n12. Delete a book\" + \"\\n------------------------------\" + \"\\nLending\" + \"\\n------------------------------\" +\n" +
-                                               "\"\\n13. Create new loan\" + \"\\n14. Register return of loaned book\" + \"\\n15. Show all loans\" +\n" +
-                                               "\"\\n16. Show all loans for a customer\" + \"\\n17. Show most borrowed books\" + \"\\n------------------------ ------\" +\n" +
-                                               "\"\\nDATA\" + \"\\n------------------------------\" + \"\\n18. Exit\" +\n" +
-                                               "\"\\n-----------------------------\" + \"\\nType your choice: ");
+                svar = TerminalInput.getInt(
+                        "\n-------------------------------" + "\nWelcome to Lyngby Library" + "\n-------------------------------" +
+                        "\nCustomer" + "\n-------------------------------" + "\n1. Create new customer" + "\n2. View all registered customers" +
+                        "\n3. Find the customer via partial input" + "\n4. Update customer information" + "\n5. Delete a customer" +
+                        "\n-------------------------------" + "\nBooks" + "\n-------------------------------" +
+                        "\n6. Create new book" + "\n7. Show all registered books" + "\n8. Show borrowed books" +
+                        "\n9. Show available books" + "\n10. Find books via partial input" + "\n11. Update a book" +
+                        "\n12. Delete a book" + "\n-------------------------------" + "\nLending" + "\n-------------------------------" +
+                        "\n13. Create new loan" + "\n14. Register return of loaned book" + "\n15. Show all loans" +
+                        "\n16. Show all loans for a customer" + "\n17. Show most borrowed books" + "\n-------------------------------" +
+                        "\nDATA" + "\n-------------------------------" + "\n18. Exit" +
+                        "\n-------------------------------" + "\nType your choice: ");
 
                 switch (svar)
                 {

@@ -1,5 +1,4 @@
 import Niveau2_logik.Sprog;
-import Niveau2_logik.StartMenu;
 
 import java.sql.SQLException;
 

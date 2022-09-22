@@ -14,17 +14,18 @@ public class StartMenuFinsk
 
             while (true)
             {
-                svar = TerminalInput.getInt("\n-------------------------------" + "\nTervetuloa Lyngby Libraryyn\" + \"\\n-------------------------------\" +\n" +
-                                               "\"\\nAsiakas\" + \"\\n------------------------------\" + \"\\n1. Luo uusi asiakas\" + \" \\n2. Näytä kaikki rekisteröityneet asiakkaat\" +\n" +
-                                               "\"\\n3. Etsi asiakas osittaisella syötöllä\" + \"\\n4. Päivitä asiakastiedot\" + \"\\n5. Poista asiakas\" +\n" +
-                                               "\"\\n------------------------------\" + \"\\nKirjat\" + \"\\n------ -- -------------------------\" +\n" +
-                                               "\"\\n6. Luo uusi kirja\" + \"\\n7. Näytä kaikki rekisteröidyt kirjat\" + \"\\n8. Näytä lainatut kirjat\" +\n" +
-                                               "\"\\n9. Näytä saatavilla olevat kirjat\" + \"\\n10. Etsi kirjoja osittaisella syötöllä\" + \"\\n11. Päivitä kirja\" +\n" +
-                                               "\"\\n12. Poista kirja\" + \"\\n-------------------------------\" + \"\\nLainaus\" + \" \\n-------------------------------\" +\n" +
-                                               "\"\\n13. Luo uusi laina\" + \"\\n14. Rekisteröi lainatun kirjan palautus\" + \"\\n15. Näytä kaikki lainat\" +\n" +
-                                               "\"\\n16. Näytä kaikki asiakkaan lainat\" + \"\\n17. Näytä useimmat lainatut kirjat\" + \"\\n------------------------ - -----\" +\n" +
-                                               "\"\\nDATA\" + \"\\n-------------------------------\" + \"\\n18. Poistu\" +\n" +
-                                               "\"\\n------------------------------\" + \"\\nKirjoita valintasi: ");
+                svar = TerminalInput.getInt(
+                        "\n-------------------------------" + "\nTervetuloa Lyngby Libraryyn" + "\n-------------------------------" +
+                        "\nAsiakas" + "\n-------------------------------" + "\n1. Luo uusi asiakas" + "\n2. Näytä kaikki rekisteröityneet asiakkaat" +
+                        "\n3. Etsi asiakas osittaisella syötöllä" + "\n4. Päivitä asiakastiedot" + "\n5. Poista asiakas" +
+                        "\n-------------------------------" + "\nKirjat" + "\n-------------------------------" +
+                        "\n6. Luo uusi kirja" + "\n7. Näytä kaikki rekisteröidyt kirjat" + "\n8. Näytä lainatut kirjat" +
+                        "\n9. Näytä saatavilla olevat kirjat" + "\n10. Etsi kirjoja osittaisella syötöllä" + "\n11. Päivitä kirja" +
+                        "\n12. Poista kirja" + "\n-------------------------------" + "\nLainaus" + "\n-------------------------------" +
+                        "\n13. Opret nyt udlån" + "\n14. Registrer retur af udlånt bog" + "\n15. Vis alle udlån" +
+                        "\n16. Näytä kaikki asiakkaan lainat" + "\n17. Näytä useimmat lainatut kirjat" + "\n-------------------------------" +
+                        "\nDATA" + "\n-------------------------------" + "\n18. Poistu" +
+                        "\n-------------------------------" + "\nKirjoita valintasi: ");
 
                 switch (svar)
                 {
