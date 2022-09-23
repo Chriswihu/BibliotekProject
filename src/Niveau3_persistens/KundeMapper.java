@@ -47,7 +47,8 @@ public class KundeMapper
                 String adresse = resultSet.getString("Adresse");
                 int postnummer = resultSet.getInt("Postnummer");
 
-                System.out.println("ID: " + id + " Navn: " + navn + " Adresse: " + adresse + " Postnummer: " + postnummer);
+                System.out.println("ID: " + id + " Navn: " + navn +
+                        " Adresse: " + adresse + " Postnummer: " + postnummer);
             }
         }
     }
@@ -69,7 +70,8 @@ public class KundeMapper
                 String adresse = resultSet.getString("Adresse");
                 int postnummer = resultSet.getInt("Postnummer");
 
-                System.out.println("ID: " + id + " Navn: " + navn + " Adresse: " + adresse + " Postnummer: " + postnummer);
+                System.out.println("ID: " + id + " Navn: " + navn +
+                        " Adresse: " + adresse + " Postnummer: " + postnummer);
             }
         }
     }

@@ -136,7 +136,8 @@ public class BogMapper {
                 String titel = resultSet.getString("Titel");
                 int udgivelsesår = resultSet.getInt("Udgivelsesår");
 
-                System.out.println("ID: " + id + " Forfatter: " + forfatter + " Titel: " + titel + " Udgivelsesår: " + udgivelsesår);
+                System.out.println("ID: " + id + " Forfatter: " + forfatter +
+                        " Titel: " + titel + " Udgivelsesår: " + udgivelsesår);
             }
         } catch (Exception e)
         {
@@ -207,7 +208,9 @@ public class BogMapper {
                 int udgivelsesår = resultSet.getInt("Udgivelsesår");
                 int antalUdlån = resultSet.getInt("AntalUdlån");
 
-                System.out.println("ID: " + id + " Forfatter: " + forfatter + " Titel: " + titel + " Udgivelsesår: " + udgivelsesår + " Antal udlån: " + antalUdlån);
+                System.out.println("ID: " + id + " Forfatter: " + forfatter +
+                        " Titel: " + titel + " Udgivelsesår: " + udgivelsesår +
+                        " Antal udlån: " + antalUdlån);
             }
         } catch (Exception e)
         {

@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class TerminalInput {
     public static String getString(String s)
     {
-        System.out.println(s + ": ");
+        System.out.println(s);
         Scanner sc = new Scanner(System.in);
 
         return sc.nextLine();

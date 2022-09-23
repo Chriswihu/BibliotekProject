@@ -83,7 +83,9 @@ public class UdlånsMapper
                 Date udlånsdato = resultSet.getDate("Udlånsdato");
                 Date afleveringsdato = resultSet.getDate("Afleveringsdato");
 
-                System.out.println("Udlåns ID: " + id + " Låner ID: " + lånerID + " Bog ID: " + bogID + " Udlånsdato: " + udlånsdato + " Afleveringsdato: " + afleveringsdato);
+                System.out.println("Udlåns ID: " + id + " Låner ID: " + lånerID +
+                        " Bog ID: " + bogID + " Udlånsdato: " + udlånsdato +
+                        " Afleveringsdato: " + afleveringsdato);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -107,7 +109,9 @@ public class UdlånsMapper
                 Date udlånsdato = resultSet.getDate("Udlånsdato");
                 Date afleveringsdato = resultSet.getDate("Afleveringsdato");
 
-                System.out.println("ID: " + id + " Låner ID: " + lånerID + " Bog ID: " + bogID + " Udlånsdato: " + udlånsdato + " Afleveringsdato: " + afleveringsdato);
+                System.out.println("ID: " + id + " Låner ID: " + lånerID +
+                        " Bog ID: " + bogID + " Udlånsdato: " + udlånsdato +
+                        " Afleveringsdato: " + afleveringsdato);
             }
         } catch (SQLException e) {
             e.printStackTrace();
